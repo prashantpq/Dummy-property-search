@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Property Search</title>
+</head>
+<body>
+    <h1>Search for Similar Properties</h1>
+    
+    <form method="POST">
+        <label for="description">Enter Property Description:</label><br>
+        <textarea name="description" rows="4" cols="50" required></textarea><br><br>
+
+        <label for="location">Enter Location:</label><br>
+        <input type="text" name="location" required><br><br>
+
+        <label for="price">Enter Price:</label><br>
+        <input type="number" name="price" required><br><br>
+
+        <input type="submit" value="Search">
+    </form>
+    
+    <h2>Top 5 Similar Properties</h2>
+    
+    {% if properties %}
+    <ul>
+        {% for property in properties %}
+        <li>{{ property['description'] }} - Location: {{ property['location'] }} - Price: {{ property['price'] }}</li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p>No similar properties found.</p>
+    {% endif %}
+</body>
+</html>
